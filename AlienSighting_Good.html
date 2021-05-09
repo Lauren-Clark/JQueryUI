@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery UI Example Page</title>
+	<link href="jquery-ui.css" rel="stylesheet">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+	<style>
+	body{
+		font-family: "Trebuchet MS", sans-serif;
+		margin: 50px;
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
+	select {
+		width: 200px;
+	}
+
+
+	/******************************************* COLOR PICKER ***********************************************/
+
+
+	  #red, #green, #blue {
+    float: left;
+    clear: left;
+    width: 300px;
+    margin: 15px;
+  }
+  #swatch {
+    width: 120px;
+    height: 100px;
+    margin-top: 18px;
+    margin-left: 350px;
+    background-image: none;
+  }
+  #red .ui-slider-range { background: #ef2929; }
+  #red .ui-slider-handle { border-color: #ef2929; }
+  #green .ui-slider-range { background: #8ae234; }
+  #green .ui-slider-handle { border-color: #8ae234; }
+  #blue .ui-slider-range { background: #729fcf; }
+  #blue .ui-slider-handle { border-color: #729fcf; }
+
+
+
+
+/******************************************************** SLIDER **************************************************/
+
+  #custom-handle {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+  }
+
+    #custom-handle2 {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+  }
+
+	</style>
+</head>
+<body>
+
+
+
+
+
+
+
+<h1 id="header1"><img src="https://i.imgur.com/BS71xG7.png"> Report Your Alien Sighting <img src="https://i.imgur.com/hnMHTrZ.png"></h1>
+
+<!-- Datepicker -->
+<h2 class="demoHeaders">Date of Sighting:</h2>
+<div id="datepicker"></div>
+
+
+<!------------------------------------------- Checkboxradio ------------------------------------------->
+<h2 class="demoHeaders">Creature Type</h2>
+<form style="margin-top: 1em;">
+	<div id="radioset">
+		<input type="radio" id="radio1" name="radio"><label for="radio1">Human-like</label>
+		<input type="radio" id="radio2" name="radio" checked="checked"><label for="radio2">Worm-like</label>
+		<input type="radio" id="radio3" name="radio"><label for="radio3">Insect-like</label>
+		<input type="radio" id="radio4" name="radio"><label for="radio4">Fish-like</label>
+		<input type="radio" id="radio5" name="radio"><label for="radio5">Bird-like</label>
+	</div>
+</form>
+
+<!------------------------------------------------- header ----------------------------------------------->
+		<h3 id="header3">Alien Details</h3>
+
+<!-------------------------------------------SLIDERS FOR CREATURE WEIGHT & HEIGHT---------------------------------->
+
+<h2 class="demoHeaders">Creature Weight (in pounds)</h2>
+<div id="slider">
+  <div id="custom-handle" class="ui-slider-handle"></div>
+</div>
+ 
+ <h2 class="demoHeaders">Creature Height (in feet)</h2>
+ <div id="slider2">
+  <div id="custom-handle2" class="ui-slider-handle"></div>
+</div>
+ 
+
+<!--
+
+<h2 class="demoHeaders">Creature Weight (in pounds)</h2>
+<div id="slider"></div>
+
+ Slider for Creature Height
+<h2 class="demoHeaders">Creature Height (in feet)</h2>
+<div id="slider2"></div>
+
+-->
+
+
+
+
+<!------------------------------------------------------SPINNERS FOR # OF EYES, ARMS, LEGS ---------------------------->
+<h2 class="ui-state-highlight ui-corner-all">Number of Eyes</h2>
+<input id="spinner">
+
+<!-- Spinner for Number of Arms-->
+<h2 class="ui-state-highlight ui-corner-all">Number of Arms</h2>
+<input id="spinner2">
+
+<!-- Spinner for Number of Legs-->
+<h2 class="ui-state-highlight ui-corner-all">Number of Legs</h2>
+<input id="spinner3">
+
+
+
+<!------------------------------------------ COLOR PICKER --------------------->
+
+<p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+  
+  What was the main color of the alien?
+</p>
+ 
+<div id="red"></div>
+<div id="green"></div>
+<div id="blue"></div>
+ 
+<div id="swatch" class="ui-widget-content ui-corner-all"></div>
+
+
+
+<!----------------------------------------------------------- ui-dialog---------------------------------------------------------------- -->
+<br><br>
+<p>
+	<button id="dialog-link" class="ui-button ui-corner-all ui-widget">
+		<span class="ui-icon ui-icon-newwin"></span>Submit
+	</button>
+</p>
+
+
+<div id="dialog" title="Dialog Title">
+	<p>Thank you for submitting your sighting about the alien you saw! Glad you weren't abducted!<br> <img src="images/aliencutie.png"></p>
+</div>
+
+
+<!------------------------------------------------------ --------------------------------------------------------------------->
+
+<script src="external/jquery/jquery.js"></script>
+<script src="jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<script>
+
+
+
+
+$( "#button" ).button();
+$( "#button-icon" ).button({
+	icon: "ui-icon-gear",
+	showLabel: false
+});
+
+$( "#radioset" ).buttonset();
+
+$( "#controlgroup" ).controlgroup();
+
+
+/******************** DIALOG ******************************/
+
+
+  $( function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+ 
+    $( "#opener" ).on( "click", function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  } );
+
+
+$( "#dialog" ).dialog({
+	autoOpen: false,
+	width: 400,
+	buttons: [
+		{
+			text: "Ok",
+			click: function() {
+				$( this ).dialog( "close" );
+			}
+		},
+		{
+			text: "Cancel",
+			click: function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	]
+});
+
+// Link to open the dialog
+$( "#dialog-link" ).click(function( event ) {
+	$( "#dialog" ).dialog( "open" );
+	event.preventDefault();
+});
+
+// Hover states on the static widgets
+$( "#dialog-link, #icons li" ).hover(
+	function() {
+		$( this ).addClass( "ui-state-hover" );
+	},
+	function() {
+		$( this ).removeClass( "ui-state-hover" );
+	}
+);
+
+
+/*****************************************************/
+
+$( "#datepicker" ).datepicker({
+	inline: true
+});
+
+
+
+function show_value(x)
+{
+ document.getElementById("slider").innerHTML=x;
+}
+
+/**************************************************** SLIDERS ****************************************/
+
+  $( function() {
+    var handle = $( "#custom-handle" );
+    $( "#slider" ).slider({
+      create: function() {
+        handle.text( $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+        handle.text( ui.value );
+      }
+    });
+  } );
+
+    $( function() {
+    var handle = $( "#custom-handle2" );
+    $( "#slider2" ).slider({
+      create: function() {
+        handle.text( $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+        handle.text( ui.value );
+      }
+    });
+  } );
+/******************************************* SPINNERS, EACH HAVE OWN ID ***************************/
+
+$( "#spinner" ).spinner();
+
+$( "#spinner2").spinner();
+
+$( "#spinner3").spinner();
+
+/* sets a min and max for the spinners */
+
+$("#spinner").spinner({min: 0, max: 100});
+
+$("#spinner2").spinner({min: 0, max: 100});
+
+$("#spinner3").spinner({min: 0, max: 100});
+
+$( "#menu" ).menu();
+
+
+$( "#selectmenu" ).selectmenu();
+
+
+
+/*****************************************COLOR PICKER ******************************************/
+  $( function() {
+    function hexFromRGB(r, g, b) {
+      var hex = [
+        r.toString( 16 ),
+        g.toString( 16 ),
+        b.toString( 16 )
+      ];
+      $.each( hex, function( nr, val ) {
+        if ( val.length === 1 ) {
+          hex[ nr ] = "0" + val;
+        }
+      });
+      return hex.join( "" ).toUpperCase();
+    }
+    function refreshSwatch() {
+      var red = $( "#red" ).slider( "value" ),
+        green = $( "#green" ).slider( "value" ),
+        blue = $( "#blue" ).slider( "value" ),
+        hex = hexFromRGB( red, green, blue );
+      $( "#swatch" ).css( "background-color", "#" + hex );
+    }
+ 
+    $( "#red, #green, #blue" ).slider({
+      orientation: "horizontal",
+      range: "min",
+      max: 255,
+      value: 127,
+      slide: refreshSwatch,
+      change: refreshSwatch
+    });
+    $( "#red" ).slider( "value", 255 );
+    $( "#green" ).slider( "value", 140 );
+    $( "#blue" ).slider( "value", 60 );
+  } );
+
+ /*************************************** CHECK BOXES **************************************/
+    $( function() {
+    $( "input" ).checkboxradio({
+      icon: false
+    });
+  } );
+
+
+
+$(":header").css({background: "#98eb34", color: "green", padding: "9px", "font-size": "150%", "border-radius": "75px", });
+
+$("#header1").css({"textAlign":"center"});
+
+$("#header3").css({"textAlign":"center"});
+
+</script>
+</body>
+</html>
+
+
+
+<!-- RESOURCES 
+
+SLIDERS: https://api.jqueryui.com/slider/
+
+COLOR PICKER: https://jqueryui.com/slider/#colorpicker 
+
+CHECKBOXRADIO: https://jqueryui.com/checkboxradio/#no-icons 
+
+ANIMATED BUTTON/DIALOG: https://jqueryui.com/dialog/#animated 
+
+SPINNER: https://jqueryui.com/spinner/
+
+DATEPICKER: https://jqueryui.com/datepicker/
+
+DIALOG: https://jqueryui.com/dialog/
+
+ACCORDION: https://jqueryui.com/accordion/
+
+JQUERY UI DOWNLOAD: https://jqueryui.com/download/
+
+JQUERY UI DEMOS: https://jqueryui.com/demos/
+
+-->
